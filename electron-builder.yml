@@ -1,0 +1,11 @@
+appId: local.cockpit
+productName: Cockpit
+directories:
+  output: dist
+files:
+  - out/**
+  - package.json
+mac:
+  target: dir
+  identity: null
+  category: public.app-category.productivity
