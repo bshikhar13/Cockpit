@@ -13,6 +13,31 @@
   <img src="docs/screenshots/today.png" alt="The Today screen: the diary in the centre, with today's tasks and habits in the right rail" />
 </p>
 
+## Download
+
+**[Download the latest version](https://github.com/bshikhar13/Cockpit/releases/latest)** from the Releases page:
+
+| Your Mac | File |
+|---|---|
+| Apple Silicon (M1, M2, M3, M4 and later) | `Cockpit-<version>-arm64.dmg` |
+| Intel | `Cockpit-<version>-x64.dmg` |
+
+Not sure which you have? Apple menu  → **About This Mac**: "Chip: Apple M…" means Apple Silicon,
+"Processor: Intel…" means Intel. Cockpit needs macOS 11 (Big Sur) or later.
+
+To install, open the `.dmg` and drag **Cockpit** onto **Applications**.
+
+**First launch.** Cockpit is free and not registered with Apple's paid developer programme, so the
+first time you open it macOS will say it can't verify the app. This happens once:
+
+- **macOS 15 (Sequoia) and later:** open Cockpit, click **Done** on the warning, then go to
+  **System Settings → Privacy & Security**, scroll down, and click **Open Anyway** next to Cockpit.
+- **macOS 14 (Sonoma) and earlier:** right-click Cockpit in Applications, choose **Open**, then
+  click **Open** in the dialog.
+
+After that it opens like any other app. The source is all here if you'd rather
+[build it yourself](#getting-started).
+
 ## Built on PARA, by Tiago Forte
 
 Cockpit is organised around **PARA**, a method created by productivity author
@@ -130,14 +155,17 @@ npm install
 npm run dev
 ```
 
-To build a standalone app:
+To build the app for this Mac:
 
 ```bash
-npm run package
+npm run package     # dist/mac-arm64/Cockpit.app
 ```
 
-This makes `dist/mac-arm64/Cockpit.app` (unsigned). Drag it to Applications; the first time,
-right-click it and choose **Open**.
+To build the downloadable disk images for Apple Silicon and Intel:
+
+```bash
+npm run dist        # dist/Cockpit-<version>-arm64.dmg and -x64.dmg
+```
 
 ## Tests
 

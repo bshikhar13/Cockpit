@@ -13,7 +13,8 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
     "e2e": "electron-vite build && playwright test",
-    "package": "electron-vite build && electron-builder --mac --dir"
+    "package": "electron-vite build && electron-builder --mac --dir",
+    "dist": "electron-vite build && electron-builder --mac dmg --arm64 --x64"
   },
   "dependencies": {
     "@codemirror/autocomplete": "^6.20.4",

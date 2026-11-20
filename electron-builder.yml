@@ -1,11 +1,26 @@
-appId: local.cockpit
+appId: io.github.bshikhar13.cockpit
 productName: Cockpit
+copyright: Copyright © 2026 bshikhar13
 directories:
   output: dist
+afterPack: build/adhoc-sign.cjs
 files:
   - out/**
   - package.json
 mac:
-  target: dir
-  identity: null
   category: public.app-category.productivity
+  # No Apple Developer ID: electron-builder's own signing is off, and build/adhoc-sign.cjs gives
+  # the app an ad-hoc signature instead. macOS asks once before the first launch.
+  identity: null
+  hardenedRuntime: false
+  target:
+    - target: dir
+    - target: dmg
+      arch: [arm64, x64]
+dmg:
+  artifactName: Cockpit-${version}-${arch}.dmg
+  title: Cockpit ${version}
+  contents:
+    - { x: 150, y: 190 }
+    - { x: 390, y: 190, type: link, path: /Applications }
+  window: { width: 540, height: 380 }
